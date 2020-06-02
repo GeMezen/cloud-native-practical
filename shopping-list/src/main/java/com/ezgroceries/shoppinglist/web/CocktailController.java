@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CocktailController {
 
     @GetMapping
-    public List<CocktailResource> get(@RequestParam String search) {
+    public List<CocktailResource> SearchCocktails(@RequestParam String search) {
         return new ArrayList<>(getDummyResources());
     }
 
