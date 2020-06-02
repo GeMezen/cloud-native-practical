@@ -1,9 +1,10 @@
 package com.ezgroceries.shoppinglist.web;
-;
+
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
-import lombok.Builder.Default;
 import lombok.Data;
+
+;
 
 /**
  * @author Gert
@@ -13,7 +14,7 @@ import lombok.Data;
 public class ShoppingListResource {
     private String shoppingListId ;
     private String name;
-    
+
     public ShoppingListResource(String name) {
         byte[] bytes = name.getBytes(StandardCharsets.UTF_8);
         this.shoppingListId = UUID.nameUUIDFromBytes(bytes).toString();

@@ -1,0 +1,40 @@
+# Search cocktails
+GET http://localhost:8080/cocktails?search=Russian
+
+###
+
+# Create a new Shopping List
+POST http://localhost:8080/shopping-lists
+Content-Type: application/json
+
+{
+  "name": "Stephanie's birthday"
+}
+
+###
+
+# Add Cocktails to Shopping List
+POST http://localhost:8080/shopping-lists/97c8e5bd-5353-426e-b57b-69eb2260ace3/cocktails
+Content-Type: application/json
+
+[
+  {
+    "cocktailId": "23b3d85a-3928-41c0-a533-6538a71e17c4"
+  },
+  {
+    "cocktailId": "d615ec78-fe93-467b-8d26-5d26d8eab073"
+  }
+]
+
+###
+
+# Get a Shopping List
+GET http://localhost:8080/shopping-lists/eb18bb7c-61f3-4c9f-981c-55b1b8ee8915
+Content-Type: application/json
+
+###
+
+# Get all ShoppingLists
+GET http://localhost:8080/shopping-lists
+
+###

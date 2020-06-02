@@ -9,15 +9,11 @@ import lombok.Data;
  * @author Gert
  * @since release 202008 / (2020-06-02)
  */
-@AllArgsConstructor
 @Data
-public class CocktailResource {
+@AllArgsConstructor
+public class ShoppingIngredientsList {
 
-    private UUID cocktailId;
+    private UUID shoppingListId;
     private String name;
-    private String container;
-    private String instructions;
-    private String picture;
     private List<String> ingredients;
-
 }
