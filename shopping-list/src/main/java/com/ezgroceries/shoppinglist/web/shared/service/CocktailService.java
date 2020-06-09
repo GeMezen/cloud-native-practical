@@ -1,7 +1,6 @@
-package com.ezgroceries.shoppinglist.web.cocktails;
+package com.ezgroceries.shoppinglist.web.shared.service;
 
-import com.ezgroceries.shoppinglist.web.shared.service.CocktailDBClient;
-import com.ezgroceries.shoppinglist.web.shared.service.CocktailDBResponse;
+import com.ezgroceries.shoppinglist.web.cocktails.CocktailResource;
 import com.ezgroceries.shoppinglist.web.shared.service.CocktailDBResponse.DrinkResource;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -49,7 +48,6 @@ public class CocktailService {
     }
 
     private CocktailResource map(DrinkResource drinkResource) {
-
         return CocktailResource.builder()
             .cocktailId(UUID.nameUUIDFromBytes(drinkResource.getIdDrink().getBytes(StandardCharsets.UTF_8)))
             .name(drinkResource.getStrDrink())

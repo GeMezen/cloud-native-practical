@@ -8,7 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.ezgroceries.shoppinglist.web.cocktails.CocktailController;
 import com.ezgroceries.shoppinglist.web.cocktails.CocktailResource;
-import com.ezgroceries.shoppinglist.web.cocktails.CocktailService;
+import com.ezgroceries.shoppinglist.web.shared.service.CocktailService;
 import java.util.List;
 import javax.annotation.Resource;
 import org.junit.jupiter.api.BeforeEach;
