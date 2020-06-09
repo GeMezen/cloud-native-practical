@@ -38,3 +38,12 @@ Content-Type: application/json
 GET http://localhost:8080/shopping-lists
 
 ###
+
+# Lab04
+GET https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita
+
+###
+#
+GET http://localhost:8080/cocktails?search=russian
+
+##
