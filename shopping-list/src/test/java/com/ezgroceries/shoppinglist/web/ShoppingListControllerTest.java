@@ -23,7 +23,7 @@ import org.springframework.test.web.servlet.MockMvc;
  * @since release 202008 / (2020-06-02)
  */
 @WebMvcTest(ShoppingListController.class)
-class ShoppingListEntityControllerTest {
+class ShoppingListControllerTest {
 
     private static final String[] INGREDIENTS_LIST = {"Tequila", "Triple sec", "Lime juice", "Salt", "Blue Curacao"};
 

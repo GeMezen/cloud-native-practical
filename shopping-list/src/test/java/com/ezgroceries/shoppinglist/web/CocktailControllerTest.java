@@ -27,7 +27,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(CocktailController.class)
 @ContextConfiguration(classes = CocktailControllerTestConfiguration.class)
-class CocktailEntityControllerTest {
+class CocktailControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
