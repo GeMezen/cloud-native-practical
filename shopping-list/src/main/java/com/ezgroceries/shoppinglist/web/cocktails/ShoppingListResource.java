@@ -1,7 +1,6 @@
 package com.ezgroceries.shoppinglist.web.cocktails;
 
-import java.nio.charset.StandardCharsets;
-import java.util.UUID;
+import lombok.Builder;
 import lombok.Data;
 
 ;
@@ -11,13 +10,10 @@ import lombok.Data;
  * @since release 202008 / (2020-06-02)
  */
 @Data
+@Builder
 public class ShoppingListResource {
     private String shoppingListId ;
     private String name;
 
-    public ShoppingListResource(String name) {
-        byte[] bytes = name.getBytes(StandardCharsets.UTF_8);
-        this.shoppingListId = UUID.nameUUIDFromBytes(bytes).toString();
-        this.name = name;
-    }
+
 }

@@ -4,11 +4,17 @@ import com.ezgroceries.shoppinglist.web.cocktails.CocktailId;
 import com.ezgroceries.shoppinglist.web.cocktails.ShoppingIngredientsList;
 import com.ezgroceries.shoppinglist.web.cocktails.ShoppingListRequest;
 import com.ezgroceries.shoppinglist.web.cocktails.ShoppingListResource;
+import com.ezgroceries.shoppinglist.web.shared.internal.cockatil_shopping_list.CocktailShoppingListEntity;
+import com.ezgroceries.shoppinglist.web.shared.internal.cockatil_shopping_list.CocktailShoppingListRepository;
+import com.ezgroceries.shoppinglist.web.shared.internal.cocktail.CocktailEntity;
+import com.ezgroceries.shoppinglist.web.shared.internal.cocktail.CocktailRepository;
+import com.ezgroceries.shoppinglist.web.shared.internal.shopping_list.ShoppingListEntity;
 import com.ezgroceries.shoppinglist.web.shared.internal.shopping_list.ShoppingListRepository;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,22 +27,75 @@ import org.springframework.stereotype.Service;
 public class ShoppingListService {
 
     private final ShoppingListRepository shoppingListRepository;
+    private final CocktailShoppingListRepository cocktailShoppingListRepository;
+    private final CocktailRepository cocktailRepository;
 
+    /*
+        Create a new Shopping List
+         Refactor the ShoppingListController to have an autowired reference to the ShoppingListService
+         and invoke the appropriate service layer method.
+         Replace the dummy response resources with the actual result of the creation.
+    */
     public ShoppingListResource create(ShoppingListRequest request) {
-        return new ShoppingListResource(request.getName());
+        ShoppingListEntity entity = shoppingListRepository.save(ShoppingListEntity.builder().name(request.getName()).build());
+        return ShoppingListResource.builder().name(entity.getName()).shoppingListId(entity.getId().toString()).build();
     }
 
+    /*
+        Add Cocktails to Shopping List
+        Replace the dummy resources and provide a real persisted implementation.
+        This will include a service layer that will take care of linking cocktails with a specific shopping list.
+    */
     public ArrayList<CocktailId> addCocktails(String shoppingListId, ArrayList<CocktailId> cocktailsList) {
-        /*  ToDo 01/06/2020 validate existence shoppingListId and  process for each cocktail in cocktailsList
-                                    validate cocktailId and Add cocktail to shoppingList
-        */
-        return cocktailsList;  // temporary Solution to return some dummy data
+
+        //  retrieve shoppingList
+        UUID shoppingListUuid = getUuidfromString(shoppingListId);
+        ShoppingListEntity entity = shoppingListRepository.findShoppingListEntityById(shoppingListUuid);
+
+        // add cocktails to this list
+        cocktailsList.stream().map(cocktailId -> getUuidfromString(cocktailId.getCocktailId()))
+            .map(cocktailUuid -> CocktailShoppingListEntity.builder().shoppingListId(shoppingListUuid).coctailId(cocktailUuid).build())
+            .forEach(cocktailShoppingListRepository::save);
+
+        // return the list of cocktails
+        return cocktailsList;
     }
 
+    private UUID getUuidfromString(String cocktailId2) {
+        return UUID.nameUUIDFromBytes(cocktailId2.getBytes(StandardCharsets.UTF_8));
+    }
+
+    /*
+        Get a Shopping List
+        Replace the dummy resources and provide a real persisted implementation.
+        This is also the API where most of our business value is going to happen!
+        Implement the logic to retrieve all the Cocktails of the specific Shopping List
+         and extract the distinct ingredients to include them in the response body.
+    */
     public ShoppingIngredientsList getShoppingList(String shoppingListId) {
 
+        //  retrieve shopping ListName
+        ShoppingListEntity shoppingListEntity = shoppingListRepository.findShoppingListEntityById(getUuidfromString(shoppingListId));
+
+        //  retrieve all cocktails from this  shoppingList
+        List<CocktailShoppingListEntity> cocktailList = cocktailShoppingListRepository.findAllByShoppingListId(getUuidfromString(shoppingListId));
+
+        //  retrieve all ingredients form those cocktails
+        List<CocktailEntity> cocktailEntityList = cocktailRepository.findAllById(cocktailList.stream().map(i -> i.getCoctailId().toString()).collect(
+            Collectors.toList()));
+
+        // build and return
+        List<String> allIngredients = new ArrayList<>();
+        cocktailEntityList.stream().map(CocktailEntity::getIngredients).forEach(ingredients -> ingredients.forEach(allIngredients::add));
+
+        return ShoppingIngredientsList.builder()
+            .shoppingListId(getUuidfromString(shoppingListId))
+            .name(shoppingListEntity.getName())
+            .ingredients(allIngredients)
+            .build();
+
         // temporary Solution to return some dummy data
-        return new ShoppingIngredientsList(
+ /*           (
             UUID.fromString("90689338-499a-4c49-af90-f1e73068ad4f"),
             "Stephanie's birthday",
             Arrays.asList("Tequila",
@@ -44,13 +103,22 @@ public class ShoppingListService {
                 "Lime juice",
                 "Salt",
                 "Blue Curacao"));
-
+*/
     }
 
     public List<ShoppingIngredientsList> getAllShoppingList() {
 
+        /*
+        Get all Shopping Lists
+        Replace the dummy resources and provide a real persisted implementation.
+        */
+        List<ShoppingIngredientsList> allShoppingLists = shoppingListRepository.findAll().stream()
+            .map(list -> getShoppingList(list.getId().toString())).collect(Collectors.toList());
+
+        return allShoppingLists;
+
         // temporary Solution to return some dummy data
-        return Arrays.asList(
+  /*      return Arrays.asList(
             new ShoppingIngredientsList(
                 UUID.fromString("90689338-499a-4c49-af90-f1e73068ad4f"),
                 "Stephanie's birthday",
@@ -68,5 +136,7 @@ public class ShoppingListService {
                     "Salt",
                     "Blue Curacao")));
 
+    */
     }
 }
+

@@ -1,10 +1,18 @@
 package com.ezgroceries.shoppinglist.web.shared.internal.cocktail;
 
+import java.util.List;
 import java.util.UUID;
 import org.springframework.data.repository.Repository;
 
-public interface CocktailRepository extends Repository<Cocktail, UUID> {
+public interface CocktailRepository extends Repository<CocktailEntity, UUID> {
 
 
-    public Cocktail findByName(String name);
+    public CocktailEntity findByName(String name);
+
+    public List<CocktailEntity> findByIdDrinkIn(List<String> ids);
+
+    public List<CocktailEntity> findAllById(List<String> ids);
+
+    public CocktailEntity save(CocktailEntity newCocktailEntity);
+
 }

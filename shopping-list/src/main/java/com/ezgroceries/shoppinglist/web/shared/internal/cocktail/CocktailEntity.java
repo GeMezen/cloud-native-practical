@@ -8,14 +8,16 @@ import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.Data;
 
 /**
  * @author Gert
  * @since release 202008 / (2020-06-09)
  */
+@Data
 @Entity
 @Table(name = "COCKTAIL")
-public class Cocktail {
+public class CocktailEntity {
 
     @Id
     @Column(name = "id")          //  only  needed when field name does not match table name
