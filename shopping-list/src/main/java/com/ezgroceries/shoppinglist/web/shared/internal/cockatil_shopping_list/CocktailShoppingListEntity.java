@@ -20,10 +20,9 @@ import lombok.Data;
 public class CocktailShoppingListEntity {
 
     @Id
-    @Column(name = "coctail_id")          //  only  needed when field name does not match table name
-    private UUID coctailId;
+    @Column(name = "cocktail_id")          //  only  needed when field name does not match table name
+    private UUID cocktailId;
 
-    @Id
     @Column(name = "shopping_list_id")    //  only  needed when field name does not match table name
     private UUID shoppingListId;
 

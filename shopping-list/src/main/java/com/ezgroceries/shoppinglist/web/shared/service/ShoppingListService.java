@@ -54,7 +54,7 @@ public class ShoppingListService {
 
         // add cocktails to this list
         cocktailsList.stream().map(cocktailId -> getUuidfromString(cocktailId.getCocktailId()))
-            .map(cocktailUuid -> CocktailShoppingListEntity.builder().shoppingListId(shoppingListUuid).coctailId(cocktailUuid).build())
+            .map(cocktailUuid -> CocktailShoppingListEntity.builder().shoppingListId(shoppingListUuid).cocktailId(cocktailUuid).build())
             .forEach(cocktailShoppingListRepository::save);
 
         // return the list of cocktails
@@ -81,8 +81,9 @@ public class ShoppingListService {
         List<CocktailShoppingListEntity> cocktailList = cocktailShoppingListRepository.findAllByShoppingListId(getUuidfromString(shoppingListId));
 
         //  retrieve all ingredients form those cocktails
-        List<CocktailEntity> cocktailEntityList = cocktailRepository.findAllById(cocktailList.stream().map(i -> i.getCoctailId().toString()).collect(
-            Collectors.toList()));
+        List<CocktailEntity> cocktailEntityList = cocktailRepository
+            .findAllByIdIn(cocktailList.stream().map(i -> i.getCocktailId().toString()).collect(
+                Collectors.toList()));
 
         // build and return
         List<String> allIngredients = new ArrayList<>();
