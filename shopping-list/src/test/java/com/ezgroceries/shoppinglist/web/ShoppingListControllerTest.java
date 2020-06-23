@@ -7,12 +7,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.ezgroceries.shoppinglist.web.cocktails.ShoppingListController;
+import com.ezgroceries.shoppinglist.shared.service.ShoppingListService;
+import com.ezgroceries.shoppinglist.web.shoppingList.ShoppingListController;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -27,6 +29,9 @@ class ShoppingListControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @MockBean
+    private ShoppingListService service;
 
     @BeforeEach
     void setUp() {

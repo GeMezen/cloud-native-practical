@@ -1,4 +1,4 @@
-package com.ezgroceries.shoppinglist.web.cocktails;
+package com.ezgroceries.shoppinglist.web.shoppingList;
 
 import lombok.Data;
 
