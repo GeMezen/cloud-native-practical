@@ -1,15 +1,15 @@
-package com.ezgroceries.shoppinglist.web.shared.service;
+package com.ezgroceries.shoppinglist.shared.service;
 
-import com.ezgroceries.shoppinglist.web.cocktails.CocktailId;
-import com.ezgroceries.shoppinglist.web.cocktails.ShoppingIngredientsList;
-import com.ezgroceries.shoppinglist.web.cocktails.ShoppingListRequest;
-import com.ezgroceries.shoppinglist.web.cocktails.ShoppingListResource;
-import com.ezgroceries.shoppinglist.web.shared.internal.cockatil_shopping_list.CocktailShoppingListEntity;
-import com.ezgroceries.shoppinglist.web.shared.internal.cockatil_shopping_list.CocktailShoppingListRepository;
-import com.ezgroceries.shoppinglist.web.shared.internal.cocktail.CocktailEntity;
-import com.ezgroceries.shoppinglist.web.shared.internal.cocktail.CocktailRepository;
-import com.ezgroceries.shoppinglist.web.shared.internal.shopping_list.ShoppingListEntity;
-import com.ezgroceries.shoppinglist.web.shared.internal.shopping_list.ShoppingListRepository;
+import com.ezgroceries.shoppinglist.shared.persistence.cocktail.CocktailEntity;
+import com.ezgroceries.shoppinglist.shared.persistence.cocktail.CocktailRepository;
+import com.ezgroceries.shoppinglist.shared.persistence.cocktail_shopping_list.CocktailShoppingListEntity;
+import com.ezgroceries.shoppinglist.shared.persistence.cocktail_shopping_list.CocktailShoppingListRepository;
+import com.ezgroceries.shoppinglist.shared.persistence.shopping_list.ShoppingListEntity;
+import com.ezgroceries.shoppinglist.shared.persistence.shopping_list.ShoppingListRepository;
+import com.ezgroceries.shoppinglist.web.shoppingList.CocktailId;
+import com.ezgroceries.shoppinglist.web.shoppingList.ShoppingIngredientsList;
+import com.ezgroceries.shoppinglist.web.shoppingList.ShoppingListRequest;
+import com.ezgroceries.shoppinglist.web.shoppingList.ShoppingListResource;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;

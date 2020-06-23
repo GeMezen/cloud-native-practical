@@ -1,6 +1,6 @@
 package com.ezgroceries.shoppinglist.web.cocktails;
 
-import com.ezgroceries.shoppinglist.web.shared.service.CocktailService;
+import com.ezgroceries.shoppinglist.shared.service.CocktailService;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

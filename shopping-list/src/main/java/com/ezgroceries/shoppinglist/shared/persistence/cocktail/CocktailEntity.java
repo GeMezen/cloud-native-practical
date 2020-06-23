@@ -1,6 +1,6 @@
-package com.ezgroceries.shoppinglist.web.shared.internal.cocktail;
+package com.ezgroceries.shoppinglist.shared.persistence.cocktail;
 
-import com.ezgroceries.shoppinglist.web.shared.utils.StringSetConverter;
+import com.ezgroceries.shoppinglist.shared.utils.StringSetConverter;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.Column;

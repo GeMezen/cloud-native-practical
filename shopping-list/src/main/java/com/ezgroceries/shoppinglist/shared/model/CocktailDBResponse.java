@@ -1,4 +1,4 @@
-package com.ezgroceries.shoppinglist.web.shared.service;
+package com.ezgroceries.shoppinglist.shared.model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.ezgroceries.shoppinglist.web.shared.internal.shopping_list;
+package com.ezgroceries.shoppinglist.shared.persistence.shopping_list;
 
 import java.util.UUID;
 import javax.persistence.Column;

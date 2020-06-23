@@ -7,8 +7,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.ezgroceries.shoppinglist.web.cocktails.ShoppingListController;
-import com.ezgroceries.shoppinglist.web.shared.service.ShoppingListService;
+import com.ezgroceries.shoppinglist.shared.service.ShoppingListService;
+import com.ezgroceries.shoppinglist.web.shoppingList.ShoppingListController;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,9 +1,10 @@
-package com.ezgroceries.shoppinglist.web.shared.service;
+package com.ezgroceries.shoppinglist.shared.service;
 
+import com.ezgroceries.shoppinglist.shared.model.CocktailDBResponse;
+import com.ezgroceries.shoppinglist.shared.model.CocktailDBResponse.DrinkResource;
+import com.ezgroceries.shoppinglist.shared.persistence.cocktail.CocktailEntity;
+import com.ezgroceries.shoppinglist.shared.persistence.cocktail.CocktailRepository;
 import com.ezgroceries.shoppinglist.web.cocktails.CocktailResource;
-import com.ezgroceries.shoppinglist.web.shared.internal.cocktail.CocktailEntity;
-import com.ezgroceries.shoppinglist.web.shared.internal.cocktail.CocktailRepository;
-import com.ezgroceries.shoppinglist.web.shared.service.CocktailDBResponse.DrinkResource;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
